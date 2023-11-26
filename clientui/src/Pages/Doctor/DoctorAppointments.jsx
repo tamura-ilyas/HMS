@@ -26,7 +26,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import Doctordash from "./Doctordash";
-
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 const DoctorAppointments = () => {
     const options = ["Pending", "In Progress", "Completed"];
     const [doctorId,setDoctorId]=useState([]);
@@ -218,10 +219,76 @@ const DoctorAppointments = () => {
       const delAppointment= async(id) => {
         try {
           const data = await axios.delete(`http://localhost:8000/appointment/${id}`)
+          getAppointments()
+
         } catch (error) {
           
         }
       }
+      const GenerateAppointmentsReport = (e) => {
+        e.preventDefault();
+    
+        
+        // fetchAllConfirmedReservations();
+        // // ReactPDF.renderToStream(<MyDocument />);
+        const pdfDoc = new jsPDF();
+    
+        pdfDoc.setFont("helvetica", "bold");
+        pdfDoc.setFontSize(18);
+    
+        pdfDoc.text("Appointments Report", 70, 22);
+    
+        const pageWidth = pdfDoc.internal.pageSize.width;
+        const pageHeight = pdfDoc.internal.pageSize.height;
+        pdfDoc.rect(10, 10, pageWidth - 20, pageHeight - 20);
+    
+        pdfDoc.setFont("helvetica", "normal");
+        pdfDoc.setFontSize(14);
+    
+        pdfDoc.text(
+          `Patient Appointments:   ${appointmentsArray.length}`,
+          20,
+          35
+        );
+    
+        const displayFields = [
+          "firstname",
+          "lastname",
+          "date",
+          "status",
+         
+        ];
+    
+        const fieldDisplayNameMap = {
+          firstname: "Firstname",
+          lastname: "Lastname",
+          date: "Date",
+          status: "Status",
+  
+        };
+    
+        const headers = displayFields.map((field) => fieldDisplayNameMap[field]);
+        // const headers = displayFields;
+        const tableData = appointmentsArray.map((attendance) =>
+          displayFields.map((header) => {
+         
+              return attendance[header];
+    
+            
+          
+          })
+        );
+    
+        // // Add table to the PDF
+        pdfDoc.autoTable({
+          head: [headers],
+          body: tableData,
+          startY: 40,
+        });
+    
+        // // Save the PDF or open it in a new tab
+        pdfDoc.save("Appointments.pdf");
+      };
   return (
     <div>
        <div className="relative bg-neutral-white w-full h-[1024px] overflow-hidden text-left text-sm text-neutral-gray-dark font-h5-bold-20-26-02px">
@@ -380,6 +447,7 @@ const DoctorAppointments = () => {
     </TableContainer>
 
 
+    <Button onClick={GenerateAppointmentsReport} variant="secondary" className="absolute top-[14px] left-[800px] rounded-[10px] w-[150px] h-[46px]"> <b>Generate Pdf</b></Button>
       
         <div onClick={handleShow}>
         <img 
