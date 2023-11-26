@@ -1,20 +1,18 @@
-<svg width="1135" height="335" viewBox="0 0 1135 335" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_1_1929)">
-<path opacity="0.2" d="M0 0H1135V56H0V0Z" fill="#E8E8E8"/>
-<rect y="56" width="1135" height="56" fill="white"/>
-<rect y="112" width="1135" height="56" fill="white"/>
-<rect y="168" width="1135" height="56" fill="white"/>
-<rect y="224" width="1135" height="56" fill="white"/>
-<rect y="280" width="1135" height="56" fill="white"/>
-<path d="M0 56H1135" stroke="#DBDDE0"/>
-<path d="M0 112H1135" stroke="#E8E8E8"/>
-<path d="M0 168H1135" stroke="#E8E8E8"/>
-<path d="M0 224H1135" stroke="#E8E8E8"/>
-<path d="M0 280H1135" stroke="#E8E8E8"/>
+<svg width="463" height="335" viewBox="0 0 463 335" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_2381)">
+<rect y="56" width="463" height="56" fill="white"/>
+<rect y="112" width="463" height="56" fill="white"/>
+<rect y="168" width="463" height="56" fill="white"/>
+<rect y="224" width="463" height="56" fill="white"/>
+<path d="M0 56H463" stroke="#DBDDE0"/>
+<path d="M0 112H463" stroke="#E8E8E8"/>
+<path d="M0 168H463" stroke="#E8E8E8"/>
+<path d="M0 224H463" stroke="#E8E8E8"/>
+<path d="M0 280H463" stroke="#E8E8E8"/>
 </g>
 <defs>
-<clipPath id="clip0_1_1929">
-<rect width="1135" height="335" fill="white"/>
+<clipPath id="clip0_1_2381">
+<rect width="463" height="335" fill="white"/>
 </clipPath>
 </defs>
 </svg>
